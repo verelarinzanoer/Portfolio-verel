@@ -44,9 +44,10 @@ export function AboutSection() {
             whileInView="visible"
             custom={0.1}
             viewport={{ once: true, margin: "-100px" }}
-            className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tighter text-slate-50 leading-[1.1] max-w-3xl"
+            className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tighter leading-[1.1] max-w-3xl"
           >
-            Designing with Intent. Creating with Purpose.
+            <span style={{ color: "#F5F5F5" }} className="block">Design that works.</span>
+            <span style={{ color: "#A855F7" }} className="block">AI that helps.</span>
           </motion.h2>
 
           {/* Subtext */}
@@ -56,9 +57,10 @@ export function AboutSection() {
             whileInView="visible"
             custom={0.2}
             viewport={{ once: true, margin: "-100px" }}
-            className="text-sm sm:text-base leading-relaxed text-zinc-400 max-w-[48ch] mt-6 font-normal"
+            className="text-sm sm:text-base leading-relaxed max-w-[48ch] mt-6 font-normal"
+            style={{ color: "#666" }}
           >
-            I'm Muhammad Verel — a UI/UX Designer and AI Creative based in Indonesia. I bridge the gap between thoughtful design and emerging AI tools to craft experiences that feel both human and ahead of their time.
+            I'm Muhammad Verel, a UI/UX Designer based in Indonesia. I use AI tools — Figma, V0, Claude, Gemini — not to replace the thinking, but to move faster through it. Three years in, still obsessed with the details that most people scroll past.
           </motion.p>
         </div>
 
@@ -91,13 +93,17 @@ export function AboutSection() {
           className="flex flex-col items-center text-center max-w-2xl mt-12 space-y-4"
         >
           {/* Part A */}
-          <h3 className="text-xl md:text-2xl font-semibold text-slate-50 leading-snug">
-            3+ years designing products people actually love to use.
+          <h3 className="text-xl md:text-2xl leading-snug">
+            <span style={{ color: "#F5F5F5", fontWeight: "bold" }}>3+ years</span>
+            <span style={{ color: "#888", fontWeight: "normal" }}> designing products that ship — and actually get used.</span>
           </h3>
 
           {/* Part B */}
-          <p className="text-base text-zinc-400 max-w-[52ch] mx-auto leading-relaxed font-normal">
-            From zero-to-one SaaS products to AI-powered interfaces, I've worked across brand identity, product design, and creative direction. My process is research-led, detail-obsessed, and always user-first.
+          <p
+            className="text-base max-w-[52ch] mx-auto leading-relaxed font-normal"
+            style={{ color: "#666" }}
+          >
+            I've worked on mobile apps, booking websites, POS systems, and brand projects — mostly from scratch. My process starts with research, slows down at the details, and doesn't stop until the user flow makes sense.
           </p>
         </motion.div>
 
