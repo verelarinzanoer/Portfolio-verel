@@ -59,7 +59,7 @@ export default function AILabSection() {
         lineHeight: 1.7
       }}>
         Product photos, brand assets, and visual
-        concepts — made with AI, shaped by intent.
+        concepts made with AI, shaped by intent.
       </p>
 
       {/* Cards */}

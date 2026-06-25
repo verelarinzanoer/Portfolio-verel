@@ -54,7 +54,7 @@ const projects = [
     label: "02 — ENTERPRISE SYSTEM",
     title: "POS\nCHAKRA",
     tag: "Point of Sale System · B2B",
-    desc: "A POS system designed for corporate scale — from order flow to daily reporting.",
+    desc: "A POS system designed for corporate scale from order flow to daily reporting.",
     cta: "View Case Study →",
     href: "/pos-chakra-case-study.pdf",
     target: "_blank",

@@ -44,7 +44,7 @@ const TESTIMONIALS = [
     name: "Azmy Izzah",
     profession: "Product Associate · Hallobumil",
     rating: 5,
-    description: "Easy to work with and fast to execute. Verel understands the product side too — not just the visuals.",
+    description: "Easy to work with and fast to execute. Verel understands the product side too not just the visuals.",
     avatarUrl: "/azmy.jpg"
   },
   {

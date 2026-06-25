@@ -17,27 +17,28 @@ export default function ContactSection() {
 
   const wordVariants: Variants = {
     hidden: { opacity: 0, scale: 0.95 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
       transition: { type: "spring", damping: 20, stiffness: 100 }
     },
   };
 
   return (
-    <section 
-      id="contact" 
-      className="relative w-full min-h-screen bg-black flex flex-col lg:flex-row items-stretch overflow-hidden border-t border-[#1A1A1A]"
+    <section
+      id="contact"
+      className="relative w-full min-h-screen bg-[#0A0A0A] flex flex-col lg:flex-row items-stretch overflow-hidden border-t border-[#1A1A1A]"
     >
-      <Spotlight
+      {/* Spotlight dihapus/dikomentari untuk menghilangkan efek cahaya putih */}
+      {/* <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20"
         fill="white"
-      />
-      
+      /> */}
+
       {/* Left content - Contact Details */}
       <div className="flex-1 relative z-10 flex flex-col justify-center items-start px-8 sm:px-12 md:px-20 lg:px-24 py-16 md:py-24">
         {/* Eyebrow */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -51,7 +52,7 @@ export default function ContactSection() {
         </motion.div>
 
         {/* Headline */}
-        <motion.h2 
+        <motion.h2
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -67,18 +68,18 @@ export default function ContactSection() {
         </motion.h2>
 
         {/* Subtext */}
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.5 }}
           className="mt-6 text-left text-[#888888] text-sm md:text-lg max-w-md leading-relaxed"
         >
-          Tell me what you&apos;re building — I&apos;ll tell you if I can help.
+          Tell me what you&apos;re building, I&apos;ll tell you if I can help.
         </motion.p>
 
         {/* CTA Button */}
-        <motion.a 
+        <motion.a
           href="mailto:verel@email.com"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -92,7 +93,7 @@ export default function ContactSection() {
 
       {/* Right content - Spline 3D Scene (Stretches full height on desktop, takes remaining space) */}
       <div className="flex-1 relative w-full min-h-[450px] lg:min-h-screen bg-gradient-to-b from-transparent to-black/30 lg:bg-none">
-        <SplineScene 
+        <SplineScene
           scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
           className="w-full h-full absolute inset-0"
         />

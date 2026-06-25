@@ -60,7 +60,7 @@ export function AboutSection() {
             className="text-sm sm:text-base leading-relaxed max-w-[48ch] mt-6 font-normal"
             style={{ color: "#666" }}
           >
-            I'm Muhammad Verel, a UI/UX Designer based in Indonesia. I use AI tools — Figma, V0, Claude, Gemini — not to replace the thinking, but to move faster through it. Three years in, still obsessed with the details that most people scroll past.
+            I'm Muhammad Verel, a UI/UX Designer based in Indonesia. I use AI tools Figma, V0, Claude, Gemini not to replace the thinking, but to move faster through it. Three years in, still obsessed with the details that most people scroll past.
           </motion.p>
         </div>
 
@@ -74,7 +74,7 @@ export function AboutSection() {
           className="w-full max-w-4xl mt-12 aspect-video rounded-[20px] overflow-hidden border border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-zinc-900"
         >
           <video
-            src="/vidio-verel-aboutme.mp4"
+            src="/vidio-porfolio.mp4"
             className="w-full h-full object-cover"
             autoPlay
             muted
@@ -95,7 +95,7 @@ export function AboutSection() {
           {/* Part A */}
           <h3 className="text-xl md:text-2xl leading-snug">
             <span style={{ color: "#F5F5F5", fontWeight: "bold" }}>3+ years</span>
-            <span style={{ color: "#888", fontWeight: "normal" }}> designing products that ship — and actually get used.</span>
+            <span style={{ color: "#888", fontWeight: "normal" }}> designing products that ship and actually get used.</span>
           </h3>
 
           {/* Part B */}
@@ -103,7 +103,7 @@ export function AboutSection() {
             className="text-base max-w-[52ch] mx-auto leading-relaxed font-normal"
             style={{ color: "#666" }}
           >
-            I've worked on mobile apps, booking websites, POS systems, and brand projects — mostly from scratch. My process starts with research, slows down at the details, and doesn't stop until the user flow makes sense.
+            I've worked on mobile apps, booking websites, POS systems, and brand projects mostly from scratch. My process starts with research, slows down at the details, and doesn't stop until the user flow makes sense.
           </p>
         </motion.div>
 
