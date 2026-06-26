@@ -3,6 +3,7 @@
 import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
 
 const cards = [
   {
@@ -129,32 +130,12 @@ export default function AILabSection() {
       </p>
 
       {/* Button */}
-      <button
+      <Button
+        variant="secondary"
         onClick={() => router.push('/gallery')}
-        style={{
-          border: '1px solid #333',
-          background: 'transparent',
-          color: '#888',
-          padding: '12px 32px',
-          borderRadius: '999px',
-          fontSize: '0.875rem',
-          cursor: 'pointer',
-          transition: 'all 300ms',
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '8px',
-        }}
-        onMouseEnter={e => {
-          e.currentTarget.style.borderColor = '#A855F7';
-          e.currentTarget.style.color = '#A855F7';
-        }}
-        onMouseLeave={e => {
-          e.currentTarget.style.borderColor = '#333';
-          e.currentTarget.style.color = '#888';
-        }}
       >
         Explore more →
-      </button>
+      </Button>
     </section>
   );
 }

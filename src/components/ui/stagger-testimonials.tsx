@@ -12,7 +12,7 @@ const TESTIMONIALS = [
     name: "Moh Hafid",
     profession: "UI/UX Designer · PT Cakra Radha Mustika",
     rating: 5,
-    description: "Working alongside Verel was a great experience — detail-oriented, always thinking about the user, and never afraid to question assumptions.",
+    description: "Working alongside Verel was a great experience. Detail-oriented, always thinking about the user, and never afraid to question assumptions.",
     avatarUrl: "/hafid.jpg"
   },
   {
@@ -36,7 +36,7 @@ const TESTIMONIALS = [
     name: "Everal Radin",
     profession: "Product Designer · Hallobumil",
     rating: 5,
-    description: "Verel thinks beyond the screen — always connecting design decisions back to real user needs. A solid product mindset.",
+    description: "Verel thinks beyond the screen, always connecting design decisions back to real user needs. A solid product mindset.",
     avatarUrl: "/everal.jpg"
   },
   {
@@ -52,7 +52,7 @@ const TESTIMONIALS = [
     name: "Husna Kafa",
     profession: "Frontend Developer · PT Repository Solusi Indonesia",
     rating: 5,
-    description: "Verel's designs are clean and developer-friendly. Handoffs are always well-documented — makes my job so much easier.",
+    description: "Verel's designs are clean and developer-friendly. Handoffs are always well-documented, which makes my job so much easier.",
     avatarUrl: "/husna.jpeg"
   }
 ];

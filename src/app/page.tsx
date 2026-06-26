@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, AnimatePresence } from "framer-motion";
 import DotGridBg from "@/components/DotGridBg";
 import { FlowArt, FlowSection } from "@/components/ui/story-scroll";
 import AILabSection from "@/components/AILabSection";
@@ -11,6 +11,8 @@ import ContactSection from "@/components/ContactSection";
 import FooterSection from "@/components/FooterSection";
 import GallerySection from "@/components/GallerySection";
 import { AboutSection } from "@/components/sections/about-section";
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 
 // Skills arrays
 const skillsRow1 = [
@@ -40,7 +42,7 @@ const skillsRow2 = [
 const projects = [
   {
     num: "01",
-    label: "01 — MOBILE APP",
+    label: "01 | MOBILE APP",
     title: "PREGNANCY\nTRACKER",
     tag: "Healttools · Hallobumil App",
     desc: "A weight tracking feature for expecting mothers. Calm UI, clinical clarity.",
@@ -51,7 +53,7 @@ const projects = [
   },
   {
     num: "02",
-    label: "02 — ENTERPRISE SYSTEM",
+    label: "02 | ENTERPRISE SYSTEM",
     title: "POS\nCHAKRA",
     tag: "Point of Sale System · B2B",
     desc: "A POS system designed for corporate scale from order flow to daily reporting.",
@@ -62,10 +64,10 @@ const projects = [
   },
   {
     num: "03",
-    label: "03 — WEB DESIGN",
+    label: "03 | WEB DESIGN",
     title: "VILLA\nAMADAHA",
     tag: "Hospitality · Booking Website",
-    desc: "Website for a villa rental — browse rooms, check facilities, book directly.",
+    desc: "Website for a villa rental where you can browse rooms, check facilities, and book directly.",
     cta: "View Case Study →",
     href: "https://medium.com/@ahmadverelzanoe/case-study-villa-amadaha-9ece68f68535",
     target: "_blank",
@@ -73,10 +75,10 @@ const projects = [
   },
   {
     num: "04",
-    label: "04 — COMMUNITY FEATURE",
+    label: "04 | COMMUNITY FEATURE",
     title: "BUMIL\nCOMMUNITY",
     tag: "Social Feature · Hallobumil App",
-    desc: "A community feature inside Hallobumil — where mothers ask questions, share stories, and find support.",
+    desc: "A community feature inside Hallobumil where mothers ask questions, share stories, and find support.",
     cta: "View Case Study →",
     href: "/Presentasi_Case_Study_Komunitas_In-App.pdf",
     target: "_blank",
@@ -124,6 +126,32 @@ const fadeVariants: Variants = {
 };
 
 export default function Home() {
+  const [activeTab, setActiveTab] = React.useState("#about");
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["about", "work", "ai-lab", "workflow", "testimonials", "contact"];
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveTab(`#${section}`);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   // Helper to render skills items repeated for a seamless infinite loop
   const renderRow1Items = () => (
     <>
@@ -152,8 +180,166 @@ export default function Home() {
       {/* Interactive Dot Grid Canvas Background (Fixed across full viewport) */}
       <DotGridBg />
 
+      {/* Fixed Navigation Header */}
+      <motion.header
+        variants={fadeVariants}
+        initial="hidden"
+        animate="visible"
+        className="fixed top-0 left-0 w-full z-50 bg-[#0A0A0A]/85 backdrop-blur-md border-b border-zinc-900/50 py-4 px-6 md:px-12 lg:px-20"
+      >
+        <div className="flex items-center justify-between max-w-7xl mx-auto w-full">
+          <a
+            href="#"
+            className="text-lg font-semibold tracking-tight text-[#F5F5F5] hover:text-[#A855F7] transition-colors duration-300"
+          >
+            Verel
+          </a>
+
+          {/* Desktop Navigation */}
+          <nav className="segmented hidden md:flex">
+            <a
+              href="#about"
+              onClick={() => setActiveTab("#about")}
+              className={`segmented-button ${activeTab === "#about" ? "active" : ""}`}
+            >
+              About Me
+            </a>
+            <a
+              href="#work"
+              onClick={() => setActiveTab("#work")}
+              className={`segmented-button ${activeTab === "#work" ? "active" : ""}`}
+            >
+              Project
+            </a>
+            <a
+              href="#ai-lab"
+              onClick={() => setActiveTab("#ai-lab")}
+              className={`segmented-button ${activeTab === "#ai-lab" ? "active" : ""}`}
+            >
+              AI Lab
+            </a>
+            <a
+              href="#workflow"
+              onClick={() => setActiveTab("#workflow")}
+              className={`segmented-button ${activeTab === "#workflow" ? "active" : ""}`}
+            >
+              Workflow
+            </a>
+            <a
+              href="#testimonials"
+              onClick={() => setActiveTab("#testimonials")}
+              className={`segmented-button ${activeTab === "#testimonials" ? "active" : ""}`}
+            >
+              Testimoni
+            </a>
+            <a
+              href="#contact"
+              onClick={() => setActiveTab("#contact")}
+              className={`segmented-button ${activeTab === "#contact" ? "active" : ""}`}
+            >
+              Contact
+            </a>
+          </nav>
+
+          {/* Hamburger Menu Toggle (Mobile only) */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="flex md:hidden items-center justify-center p-2 text-[#888888] hover:text-[#F5F5F5] transition-colors focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation Dropdown */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+              className="md:hidden overflow-hidden bg-[#0A0A0A]/95 border-t border-zinc-900/50 mt-4 -mx-6 px-6 py-4 flex flex-col gap-4"
+            >
+              <a
+                href="#about"
+                onClick={() => {
+                  setActiveTab("#about");
+                  setMobileMenuOpen(false);
+                }}
+                className={`text-sm font-medium py-1.5 transition-colors duration-300 ${
+                  activeTab === "#about" ? "text-[#A855F7]" : "text-[#888888] hover:text-[#F5F5F5]"
+                }`}
+              >
+                About Me
+              </a>
+              <a
+                href="#work"
+                onClick={() => {
+                  setActiveTab("#work");
+                  setMobileMenuOpen(false);
+                }}
+                className={`text-sm font-medium py-1.5 transition-colors duration-300 ${
+                  activeTab === "#work" ? "text-[#A855F7]" : "text-[#888888] hover:text-[#F5F5F5]"
+                }`}
+              >
+                Project
+              </a>
+              <a
+                href="#ai-lab"
+                onClick={() => {
+                  setActiveTab("#ai-lab");
+                  setMobileMenuOpen(false);
+                }}
+                className={`text-sm font-medium py-1.5 transition-colors duration-300 ${
+                  activeTab === "#ai-lab" ? "text-[#A855F7]" : "text-[#888888] hover:text-[#F5F5F5]"
+                }`}
+              >
+                AI Lab
+              </a>
+              <a
+                href="#workflow"
+                onClick={() => {
+                  setActiveTab("#workflow");
+                  setMobileMenuOpen(false);
+                }}
+                className={`text-sm font-medium py-1.5 transition-colors duration-300 ${
+                  activeTab === "#workflow" ? "text-[#A855F7]" : "text-[#888888] hover:text-[#F5F5F5]"
+                }`}
+              >
+                Workflow
+              </a>
+              <a
+                href="#testimonials"
+                onClick={() => {
+                  setActiveTab("#testimonials");
+                  setMobileMenuOpen(false);
+                }}
+                className={`text-sm font-medium py-1.5 transition-colors duration-300 ${
+                  activeTab === "#testimonials" ? "text-[#A855F7]" : "text-[#888888] hover:text-[#F5F5F5]"
+                }`}
+              >
+                Testimoni
+              </a>
+              <a
+                href="#contact"
+                onClick={() => {
+                  setActiveTab("#contact");
+                  setMobileMenuOpen(false);
+                }}
+                className={`text-sm font-medium py-1.5 transition-colors duration-300 ${
+                  activeTab === "#contact" ? "text-[#A855F7]" : "text-[#888888] hover:text-[#F5F5F5]"
+                }`}
+              >
+                Contact
+              </a>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.header>
+
       {/* Hero Section Container (Full Viewport) */}
-      <section className="relative min-h-screen flex flex-col justify-between px-6 py-6 md:px-12 md:py-8 lg:px-20 lg:py-12 overflow-hidden w-full">
+      <section className="relative min-h-screen flex flex-col justify-between px-6 pt-24 pb-6 md:px-12 md:pt-28 md:pb-8 lg:px-20 lg:pt-32 lg:pb-12 overflow-hidden w-full">
         {/* Main staggered container */}
         <motion.div
           variants={containerVariants}
@@ -161,41 +347,6 @@ export default function Home() {
           animate="visible"
           className="flex flex-col justify-between flex-1 w-full max-w-7xl mx-auto z-10"
         >
-          {/* Top Header & Navigation */}
-          <motion.header
-            variants={fadeVariants}
-            className="flex items-center gap-8 md:gap-12 py-2"
-          >
-            <a
-              href="#"
-              className="text-lg font-semibold tracking-tight text-[#F5F5F5] hover:text-[#A855F7] transition-colors duration-300"
-            >
-              Verel
-            </a>
-            <nav className="flex items-center gap-6 md:gap-8">
-              <a
-                href="#work"
-                className="text-xs md:text-sm font-medium text-[#888888] hover:text-[#F5F5F5] transition-colors duration-300 relative group"
-              >
-                Work
-                <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-[#A855F7] transition-all duration-300 group-hover:w-full" />
-              </a>
-              <a
-                href="#ai-lab"
-                className="text-xs md:text-sm font-medium text-[#888888] hover:text-[#F5F5F5] transition-colors duration-300 relative group"
-              >
-                AI Lab
-                <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-[#A855F7] transition-all duration-300 group-hover:w-full" />
-              </a>
-              <a
-                href="#contact"
-                className="text-xs md:text-sm font-medium text-[#888888] hover:text-[#F5F5F5] transition-colors duration-300 relative group"
-              >
-                Contact
-                <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-[#A855F7] transition-all duration-300 group-hover:w-full" />
-              </a>
-            </nav>
-          </motion.header>
 
           {/* Center-Left Hero Content */}
           <main className="flex items-center justify-between flex-1 max-w-7xl mx-auto py-12 md:py-20 w-full">
@@ -240,18 +391,16 @@ export default function Home() {
                 variants={slideUpVariants}
                 className="flex items-center gap-4 flex-wrap"
               >
-                <a
-                  href="#work"
-                  className="inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-3.5 bg-[#F5F5F5] text-[#0A0A0A] font-medium text-sm md:text-base rounded-full transition-all duration-300 hover:bg-white hover:scale-[1.03] active:scale-[0.98] shadow-md shadow-white/5"
-                >
-                  View My Work
-                </a>
-                <a
-                  href="#ai-lab"
-                  className="inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-3.5 bg-transparent border border-[#A855F7] text-[#A855F7] font-medium text-sm md:text-base rounded-full transition-all duration-300 hover:bg-[#A855F7]/10 hover:border-purple-400 hover:scale-[1.03] active:scale-[0.98]"
-                >
-                  AI Lab →
-                </a>
+                <Button variant="default" asChild>
+                  <a href="#work">
+                    View My Work
+                  </a>
+                </Button>
+                <Button variant="secondary" asChild>
+                  <a href="#ai-lab">
+                    AI Lab →
+                  </a>
+                </Button>
               </motion.div>
             </div>
 
@@ -291,8 +440,8 @@ export default function Home() {
             {/* Left Side: Freelance Status */}
             <div className="flex items-center gap-2.5 text-xs md:text-sm font-medium text-[#888888]">
               <span className="relative flex h-2 w-2">
-                <span className="animate-pulse-green absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                <span className="animate-pulse-purple absolute inline-flex h-full w-full rounded-full bg-[#A855F7] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#A855F7]"></span>
               </span>
               <span>Available for freelance</span>
             </div>

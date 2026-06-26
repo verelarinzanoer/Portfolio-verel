@@ -13,7 +13,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Verel — UI/UX Designer & AI Creative",
+  title: "Verel | UI/UX Designer & AI Creative",
   description: "Crafting interfaces powered by human intuition and artificial intelligence.",
   keywords: ["UI/UX Designer", "AI Creative", "Portfolio", "Verel", "Design", "Interaction Design"],
   authors: [{ name: "Verel" }],

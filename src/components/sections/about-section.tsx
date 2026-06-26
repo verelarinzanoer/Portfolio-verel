@@ -20,7 +20,7 @@ const slideUp = {
 
 export function AboutSection() {
   return (
-    <section className="relative w-full bg-[#0A0A0A] py-20 md:py-28 px-6 md:px-12 lg:px-20 overflow-hidden flex flex-col items-center">
+    <section id="about" className="relative w-full bg-[#0A0A0A] py-20 md:py-28 px-6 md:px-12 lg:px-20 overflow-hidden flex flex-col items-center">
       <div className="w-full max-w-5xl mx-auto flex flex-col items-center">
 
         {/* TOP: Badge, Heading, Subtext */}
@@ -32,7 +32,7 @@ export function AboutSection() {
             whileInView="visible"
             custom={0}
             viewport={{ once: true, margin: "-100px" }}
-            className="px-3 py-1 text-xs uppercase tracking-widest text-[#A855F7] border border-[#A855F7]/30 rounded-full bg-[#A855F7]/5 font-medium select-none mb-6"
+            className="text-xs uppercase tracking-widest text-[#A855F7] font-semibold select-none mb-6 block"
           >
             About Me
           </motion.span>

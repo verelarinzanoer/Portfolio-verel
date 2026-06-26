@@ -46,7 +46,7 @@ export default function FooterSection() {
           </div>
           
           {/* Copyright text */}
-          <span className="text-xs text-[#333] mt-2">© 2025 Verel — Jakarta, Indonesia</span>
+          <span className="text-xs text-[#333] mt-2">© 2025 Verel, Jakarta, Indonesia</span>
         </div>
 
       </div>

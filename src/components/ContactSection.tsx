@@ -4,6 +4,7 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 import { Spotlight } from "@/components/ui/spotlight";
 import { SplineScene } from "@/components/ui/splite";
+import { Button } from "@/components/ui/button";
 
 export default function ContactSection() {
   // Stagger variants for the headline text words
@@ -45,7 +46,7 @@ export default function ContactSection() {
           transition={{ duration: 0.5 }}
           className="flex items-center gap-2.5 mb-6"
         >
-          <div className="w-[6px] h-[6px] bg-[#22C55E] rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
+          <div className="w-[6px] h-[6px] bg-[#A855F7] rounded-full animate-pulse shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
           <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-[#555] font-semibold mt-0.5">
             AVAILABLE FOR WORK
           </span>
@@ -79,16 +80,17 @@ export default function ContactSection() {
         </motion.p>
 
         {/* CTA Button */}
-        <motion.a
-          href="mailto:verel@email.com"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.6, type: "spring", stiffness: 100 }}
-          className="mt-10 px-8 py-3.5 md:px-10 md:py-4 rounded-full bg-[#A855F7] text-white font-medium text-sm md:text-base transition-all duration-300 hover:bg-[#9333EA] hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] hover:scale-[1.02] active:scale-95 z-20"
-        >
-          Start a Conversation →
-        </motion.a>
+        <Button variant="default" asChild className="mt-10 z-20" size="lg">
+          <motion.a
+            href="mailto:verel@email.com"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.6, type: "spring", stiffness: 100 }}
+          >
+            Start a Conversation →
+          </motion.a>
+        </Button>
       </div>
 
       {/* Right content - Spline 3D Scene (Stretches full height on desktop, takes remaining space) */}
